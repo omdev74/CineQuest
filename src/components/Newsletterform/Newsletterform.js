@@ -1,6 +1,6 @@
 //31st oct
 import React, { useState } from 'react';
-import "../../css/newsletter.css";
+import "./newsletter.css";
 
 const NewsletterForm = () => {
     const [email, setEmail] = useState('');

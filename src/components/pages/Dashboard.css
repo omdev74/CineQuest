@@ -1,36 +1,74 @@
-#DashboardContainer * {
+
+#DashboardContainer {
   font-family: "Alpino, sans-serif";
   color: #fff;
+  background-color: #100f12;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.DashboardForm *{
-  margin-bottom: 10px;
 
+.DashboardForm {
+  margin-bottom: 20px;
+}
+
+.DashboardForm input {
+  margin-bottom: 10px;
+}
+
+.DashboardForm button {
+  margin-top: 15px;
+  background-color: #3f51b5;
+  color: #ffffff;
+}
+
+#DashboardContainer .MuiPaper-root {
+  background-color: #100f12;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#DashboardContainer .MuiDivider-root {
+  color: white;
+  border: 1px solid #444444;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#DashboardContainer .MuiAvatar-root {
+  width: 150px;
+  height: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#DashboardContainer .MuiTypography-body1 {
+  margin-top: 10px;
+}
+
+#DashboardContainer .MuiTypography-h6 {
+  margin-bottom: 15px;
+}
+
+#DashboardContainer .MuiButton-root {
+  background-color: #3f51b5;
+  color: #ffffff;
 }
 
 /* Responsive styles for screens 768px or smaller */
 @media (max-width: 768px) {
   #DashboardContainer {
-    padding: 10px; /* Reduce container padding for smaller screens */
+    padding: 10px;
   }
 
-  /* Adjust the width of playlist items */
-  #DashboardContainer .playlist-item {
-    width: 100%; /* Make each playlist item take full width for smaller screens */
-  }
-
-  /* Adjust font sizes for smaller screens */
-  #DashboardContainer .playlist-item .playlist-title {
+  #DashboardContainer .MuiTypography-h4 {
     font-size: 1.5rem;
+    margin-bottom: 15px;
   }
 
-  /* Adjust the width of input fields */
-  #DashboardContainer .input-field {
-    width: 100%; /* Make input fields take full width for smaller screens */
-  }
-
-  /* Center the text inside the Profile Photo section */
-  #DashboardContainer .profile-photo-text {
-    text-align: center;
+  #DashboardContainer .MuiTypography-body1 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
   }
 }

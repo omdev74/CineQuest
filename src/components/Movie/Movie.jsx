@@ -13,8 +13,8 @@ function Movie({ movie, i }) {
       xl={2}
       style={{
         padding: "10px",
-        display: "flex",
-        justifyContent: "center", // Center content horizontally
+       
+        
       }}
     >
       <Grow in key={i} timeout={(i + 1) * 250}>
@@ -33,21 +33,24 @@ function Movie({ movie, i }) {
           to={`/movie/${movie.id}`}
         >
           <img
-            src={
-              movie.poster_path
-                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                : "https://powderalloy.com/wp-content/uploads/2015/11/sidebar-placeholder.png"
-            }
-            alt={movie.title}
-            style={{
-              borderRadius: "20px",
-              height: "300px",
-              marginBottom: "10px",
-              "&:hover": {
-                transform: "scale(1.02)",
-              },
-            }}
-          />
+  src={
+    movie.poster_path
+      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+      : "https://powderalloy.com/wp-content/uploads/2015/11/sidebar-placeholder.png"
+  }
+  alt={movie.title}
+  style={{
+    borderRadius: "20px",
+    width: "100%", // Set width to 100% for responsiveness
+    height: "auto", // Allow height to adjust based on width
+    maxWidth: "300px", // Set a maximum width if needed
+    marginBottom: "10px",
+    "&:hover": {
+      transform: "scale(1.02)",
+    },
+  }}
+/>
+
           <Typography
             style={{
               color: "white",
