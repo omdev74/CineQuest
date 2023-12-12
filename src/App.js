@@ -13,6 +13,8 @@ import Footer from './components/common/Footer/Footer.jsx';
 
 
 import Login from './components/auth/Login';
+import Logout from './components/auth/Logout';
+
 import Signup from './components/auth/Signup';
 // import ChatBot from './components/pages/ChatBot';
 
@@ -53,6 +55,8 @@ function App() {
               }
             />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/about" element={<AboutUs />} />

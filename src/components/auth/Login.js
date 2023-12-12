@@ -50,6 +50,9 @@ const Login = () => {
 
         // Save the user token in a cookie
         setCookie("userToken", data.token);
+        setCookie(
+          "userData",data.user.username
+        );
 
         // Redirect to the dashboard for a successful login
         navigate("/dashboard");
@@ -72,6 +75,8 @@ const Login = () => {
   const setCookie = (name, value) => {
     document.cookie = `${name}=${value}; path=/`;
   };
+
+ 
 
   return (
     <div className="login-container">

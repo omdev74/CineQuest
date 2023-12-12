@@ -7,9 +7,9 @@ import {
   Grid,
   Button,
   TextField,
-  Avatar,
   Divider,
 } from "@mui/material";
+import { CircleUserRound } from "lucide-react";
 import MovieList from "../MovieList/MovieList";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   const apiKey = "9ac88c47d4d586add1154d12a91509f7";
   const tmdbEndpoint = "https://api.themoviedb.org/3/trending/movie/week";
-  
+
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -127,22 +127,33 @@ const Dashboard = () => {
       <Divider className="dashboard-divider" />
 
       <Paper elevation={3} mt={3} className="dashboard-section">
-  <Box p={2} className="dashboard-form">
-    <Typography variant="h6">User Data</Typography>
-    {userData && (
-      <>
-        <Avatar
-          alt="Your Profile Photo"
-          src={userData.profilePhoto || "./images/default-profile-photo.jpg"}
-          sx={{ width: 150, height: 150, mt: 2 }}
-        />
-        <Typography variant="body1" sx={{ color: 'white' }}>Username: {userData.data.username || "N/A"}</Typography>
-        <Typography variant="body1" sx={{ color: 'white' }}>Email: {userData.data.email || "N/A"}</Typography>
-        <Typography variant="body1" sx={{ color: 'white' }}>Member since: {userData.data.createdAt || "N/A"}</Typography>
-      </>
-    )}
-  </Box>
-</Paper>
+        <Box p={2} className="dashboard-form">
+          <Typography variant="h6">User Data</Typography>
+          {userData && (
+            <>
+              {CircleUserRound ? (
+                <CircleUserRound
+                  className="user-icon ellipse"
+                  title="Click for profile"
+                  color="white"
+
+                />
+              ) : (
+                <img
+                  className="ellipse"
+                  alt="Ellipse"
+                  src="./images/ellipse-1.png"
+                  title="Click for profile"
+
+                />
+              )}
+              <Typography variant="body1" sx={{ color: 'white' }}>Username: {userData.data.username || "N/A"}</Typography>
+              <Typography variant="body1" sx={{ color: 'white' }}>Email: {userData.data.email || "N/A"}</Typography>
+              <Typography variant="body1" sx={{ color: 'white' }}>Member since: {userData.data.createdAt || "N/A"}</Typography>
+            </>
+          )}
+        </Box>
+      </Paper>
     </Container>
   );
 };
