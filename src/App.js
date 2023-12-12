@@ -8,6 +8,8 @@ import Sidebar from './components/common/Sidebar/Sidebar.jsx';
 import Home from './components/pages/Home';
 import Dashboard from './components/pages/Dashboard';
 import ContactUs from './components/pages/ContactUs.js';
+import Footer from './components/common/Footer/Footer.jsx';
+
 
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
@@ -57,7 +59,9 @@ function App() {
             {/* Add more routes for other pages */}
           </Routes>
           {/* <ChatBot></ChatBot> */}
+          <Footer/>
         </div>
+        
       </div>
     </Router>
   );
