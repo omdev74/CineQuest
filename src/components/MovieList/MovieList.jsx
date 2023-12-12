@@ -4,6 +4,9 @@ import Movie from "../Movie/Movie";
 import "./MovieList.css";
 
 function MovieList({ movies, numberOfMovies, excludeFirst }) {
+  // Ensure that movies is an array before attempting to slice it
+  const movieArray = Array.isArray(movies) ? movies : [];
+
   const startFrom = excludeFirst ? 1 : 0;
 
   return (
@@ -16,10 +19,9 @@ function MovieList({ movies, numberOfMovies, excludeFirst }) {
         flexWrap: "wrap",
       }}
     >
-      {movies &&
-        movies.results
-          .slice(startFrom, numberOfMovies)
-          .map((movie, i) => <Movie key={i} movie={movie} i={i} />)}
+      {movieArray
+        .slice(startFrom, numberOfMovies)
+        .map((movie, i) => <Movie key={i} movie={movie} i={i} />)}
     </Grid>
   );
 }
