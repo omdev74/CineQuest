@@ -10,6 +10,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  const [loading, setLoading] = useState(false); // Added loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,8 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true); // Set loading to true before making the request
+
       const signupData = {
         username: formData.username,
         email: formData.email,
@@ -53,6 +56,8 @@ const Signup = () => {
       navigate("/login");
     } catch (error) {
       console.error("Error during signup:", error);
+    } finally {
+      setLoading(false); // Set loading back to false after request completes
     }
   };
 
@@ -113,7 +118,14 @@ const Signup = () => {
         </div>
         <Link to="/login">Already have an account? Click here</Link>
 
-        <button type="submit">Sign Up</button>
+        {/* Conditionally render the spinner based on the loading state */}
+        {loading ? (
+          <div className="spinner-container">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <button type="submit">Sign Up</button>
+        )}
       </form>
     </div>
   );

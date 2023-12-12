@@ -7,6 +7,8 @@ import { apiClient } from "../../api/api";
 const Home = () => {
   const [data, setData] = useState(null);
 
+ 
+
   useEffect(() => {
     const apiKey = '9ac88c47d4d586add1154d12a91509f7';
     const tmdbEndpoint = 'https://api.themoviedb.org/3/trending/movie/week';

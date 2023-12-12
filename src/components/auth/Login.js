@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthService from "../services/AuthService";
 import "./Login.css";
 
 const Login = () => {
@@ -9,6 +8,7 @@ const Login = () => {
     emailOrUsername: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false); // Added loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +30,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true); // Set loading to true before making the request
+
       const response = await fetch(
         "https://moviesearch-api.onrender.com/auth/signin",
         {
@@ -54,6 +56,8 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Login error:", error);
+    } finally {
+      setLoading(false); // Set loading back to false after request completes
     }
   };
 
@@ -97,7 +101,15 @@ const Login = () => {
           />
         </div>
         <Link to="/signup">Not Registered? Click here</Link>
-        <button type="submit">Login</button>
+
+        {/* Conditionally render the spinner based on the loading state */}
+        {loading ? (
+          <div className="spinner-container">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <button type="submit">Login</button>
+        )}
       </form>
     </div>
   );

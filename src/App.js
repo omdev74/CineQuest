@@ -11,6 +11,7 @@ import ContactUs from './components/pages/ContactUs.js';
 import Footer from './components/common/Footer/Footer.jsx';
 
 
+
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 // import ChatBot from './components/pages/ChatBot';
@@ -19,6 +20,7 @@ import Signup from './components/auth/Signup';
 import './App.css';
 import AboutUs from './components/pages/AboutUs';
 import NewsletterForm from './components/Newsletterform/Newsletterform.js';
+import MovieDetails from './components/pages/Moviedetails.js';
 
 function App() {
   const routes = [
@@ -55,7 +57,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contactus" element={<ContactUs />} />
-
+            <Route path="/movie/:movieId" element={<MovieDetails />} />
             {/* Add more routes for other pages */}
           </Routes>
           {/* <ChatBot></ChatBot> */}
