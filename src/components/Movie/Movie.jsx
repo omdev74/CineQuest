@@ -30,7 +30,7 @@ function Movie({ movie, i }) {
               cursor: "pointer",
             },
           }}
-          to={`/movie/${movie.tmdbId}`}
+          to={`/movie/${movie._id}`}
         >
           <img
   src={

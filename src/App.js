@@ -10,7 +10,7 @@ import Dashboard from './components/pages/Dashboard';
 import ContactUs from './components/pages/ContactUs.js';
 import Footer from './components/common/Footer/Footer.jsx';
 
-
+import Actor from "./components/actor/Actor.js";
 
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
@@ -62,6 +62,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/movie/:movieId" element={<MovieDetails />} />
+            <Route path="/artist/:artistId" element={<Actor />} />
             {/* Add more routes for other pages */}
           </Routes>
           {/* <ChatBot></ChatBot> */}

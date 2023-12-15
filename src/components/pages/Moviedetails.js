@@ -11,16 +11,24 @@ import {
   Box,
   Divider,
   Chip,
+  Avatar,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Link,
 } from "@mui/material";
+
+// import ReviewList from "../ReviewList/ReviewList";
+import { apiClient } from "../../api/api";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
-  useEffect(() => {
-    const apiKey = "9ac88c47d4d586add1154d12a91509f7";
-    const tmdbDetailsEndpoint = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
 
+  useEffect(() => {
+    const tmdbDetailsEndpoint = `https://moviesearch-api.onrender.com/movies/${movieId}`;
+    
     fetch(tmdbDetailsEndpoint)
       .then((response) => {
         if (!response.ok) {
@@ -34,6 +42,20 @@ const MovieDetails = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+
+
+      apiClient
+      .get(`/movies/${movieId}`)
+      .then((res) => {
+        console.log(res?.data);
+        setMovieDetails(res?.data);
+        // setData(res?.data?.movies);
+      })
+      .catch((error) => {
+        console.log(error);
+        // alert(`Error, ${error.message}`);
+      });
+
   }, [movieId]);
 
   if (!movieDetails) {
@@ -78,8 +100,8 @@ const MovieDetails = () => {
               Genres
             </Typography>
             <Box>
-              {movieDetails.genres.map((genre) => (
-                <Chip key={genre.id} label={genre.name} mr={1} mb={1} />
+              {movieDetails.genre.map((genre) => (
+                <Chip key={genre} label={genre} mr={1} mb={1} />
               ))}
             </Box>
 
@@ -92,25 +114,6 @@ const MovieDetails = () => {
               {movieDetails.release_date}
             </Typography>
 
-            <Divider mb={2} />
-
-            <Typography variant="h6" mb={2}>
-              Runtime
-            </Typography>
-            <Typography variant="body1" mb={2}>
-              {movieDetails.runtime} minutes
-            </Typography>
-
-            <Divider mb={2} />
-
-            <Typography variant="h6" mb={2}>
-              Production Companies
-            </Typography>
-            <Box>
-              {movieDetails.production_companies.map((company) => (
-                <Chip key={company.id} label={company.name} mr={1} mb={1} />
-              ))}
-            </Box>
 
             <Divider mb={2} />
 
@@ -129,7 +132,33 @@ const MovieDetails = () => {
           </Paper>
         </Grid>
       </Grid>
-    </Box>
+
+      <Paper>
+        <Grid style={{ marginTop: "50px" }} container spacing={1}>
+          {movieDetails?.cast?.map((c) => (
+            <Grid key={c?._id} xs={6} md={4}>
+              <Link href={`/artist/${c?.tmdbId}`}>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar
+                      sx={{ width: 50, height: 50 }}
+                      alt={c?.name}
+                      src={`https://image.tmdb.org/t/p/w500/${c?.profile_path}`}
+                    />
+                  </ListItemAvatar>
+                  <ListItemText primary={c?.name} secondary={c?.character} />
+                </ListItem>{" "}
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+      </Paper>
+
+
+     
+            
+
+    </Box >
   );
 };
 

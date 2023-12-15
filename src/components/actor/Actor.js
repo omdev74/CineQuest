@@ -25,6 +25,7 @@ const Actor = () => {
       .get(`/artist/${artistId}`)
       .then((res) => {
         setActor(res.data);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +91,7 @@ const Actor = () => {
         <Grid container spacing={1} justifyContent="center">
           {actor?.cast?.map((c) => (
             <Grid key={c?._id} item xs={12} sm={6} md={4} lg={3}>
-              <Link href={`/artist/${c?.tmdbId}`} style={{ textDecoration: "none" }}>
+            
                 <ListItem>
                   <ListItemAvatar>
                     <Avatar
@@ -103,7 +104,7 @@ const Actor = () => {
                     secondary={c?.character}
                   />
                 </ListItem>
-              </Link>
+              
             </Grid>
           ))}
         </Grid>
